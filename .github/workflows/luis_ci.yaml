@@ -14,6 +14,7 @@ on:
       - 'luis-app/tests/*.json'
 
 env:
+  # Changed
   # Set the Azure Resource Group name
   AzureResourceGroup: luisdevops
   # Set the Azure LUIS Authoring Resource name
