@@ -94,7 +94,7 @@ jobs:
 
     # When doing a merge to master, use the master LUIS app - create if necessary (soft fails if exists)
     - name: Get master LUIS application ID
-      if: github.event_name == 'push'
+      #if: github.event_name == 'push'
       run: |
         bf luis:application:create --name $LUIS_MASTER_APP_NAME --subscriptionKey ${{ secrets.LUISAuthoringKey }} --endpoint $luisAuthoringEndpoint --versionId=0.1
         bf luis:application:list --subscriptionKey ${{ secrets.LUISAuthoringKey }} --endpoint $luisAuthoringEndpoint | \
@@ -114,7 +114,7 @@ jobs:
       
     # When doing a CI/CD run on push to master, we create a new version in an existing LUIS application 
     - name: Create new LUIS application version
-      if: github.event_name == 'push'
+      #if: github.event_name == 'push'
       run: bf luis:version:import --appId $AppId --endpoint $luisAuthoringEndpoint --subscriptionKey ${{ secrets.LUISAuthoringKey }} --in model.json
 
     - name: Train luis
